@@ -26,6 +26,7 @@ public class PodZad5 extends JFrame {
 
         controlPanel = new JPanel();
         controlPanel.setLayout(new FlowLayout());
+        controlPanel.setBackground(Color.decode("#DC667C"));
         add(controlPanel, BorderLayout.SOUTH);
 
         loadButton = new JButton("Załaduj obraz");

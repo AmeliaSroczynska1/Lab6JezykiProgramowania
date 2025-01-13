@@ -35,6 +35,7 @@ public class PodZad3 extends JFrame {
                 loadImage();
             }
         });
+        controlPanel.setBackground(Color.decode("#DC667C"));
         controlPanel.add(loadButton);
 
         grayscaleButton = new JButton("Efekt: Czarno-białe");
