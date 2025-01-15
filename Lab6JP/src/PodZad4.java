@@ -1,7 +1,8 @@
+// Dodaj funkcję anulowania operacji przetwarzania obrazu w trakcie jej trwania. Spróbuj anulować operację w momencie,
+// gdy jeden z SwingWorker jest w trakcie aktualizowania interfejsu graficznego, a drugi pracuje nad efektem.
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import javax.imageio.ImageIO;
@@ -119,7 +120,6 @@ public class PodZad4 extends JFrame {
                 }
             }
         };
-
         currentWorker.execute();
     }
 

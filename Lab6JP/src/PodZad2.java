@@ -1,12 +1,13 @@
-import javax.swing.*; // Importowanie komponentów Swing do tworzenia GUI
-import java.awt.*; // Importowanie klas do tworzenia interfejsu graficznego (np. LayoutManager)
-import java.awt.event.ActionEvent;
-import java.awt.image.BufferedImage; // Importowanie klasy BufferedImage do przetwarzania obrazów
-import java.io.File; // Importowanie klasy File do obsługi plików
-import javax.imageio.ImageIO; // Importowanie klasy ImageIO do ładowania obrazów
-import javax.swing.event.ChangeEvent;
+//  Stwórz mechanizm przetwarzania obrazu w czasie rzeczywistym z użyciem SwingWorker. Jednakże, nie stosuj żadnej
+//  synchronizacji, pozwalając na równoczesny dostęp do obiektu reprezentującego obraz przez różne workery.
 
-public class PodZad2 extends JFrame { // Klasa główna aplikacji, dziedziczy po JFrame
+import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import javax.imageio.ImageIO;
+
+public class PodZad2 extends JFrame {
     private BufferedImage image; // Obraz do przetwarzania
     private JLabel imageLabel; // Etykieta wyświetlająca obraz
     private JSlider saturationSlider; // Suwak do regulacji nasycenia
@@ -36,6 +37,13 @@ public class PodZad2 extends JFrame { // Klasa główna aplikacji, dziedziczy po
         grayscaleButton.addActionListener(e -> applyGrayscaleInWorker());
         controlPanel.add(grayscaleButton);
 
+        // Przycisk filtra kolorystycznego
+        JButton colorFilterButton = new JButton("Filtr kolorystyczny");
+        colorFilterButton.addActionListener(e -> applyColorFilterInWorker());
+        controlPanel.add(colorFilterButton);
+
+        add(controlPanel, BorderLayout.SOUTH);
+
         // Suwak nasycenia
         saturationSlider = new JSlider(0, 200, 100);
         saturationSlider.setMajorTickSpacing(50);
@@ -44,13 +52,6 @@ public class PodZad2 extends JFrame { // Klasa główna aplikacji, dziedziczy po
         saturationSlider.setPaintLabels(true);
         saturationSlider.addChangeListener(e -> adjustSaturationInWorker());
         controlPanel.add(saturationSlider);
-
-        // Przycisk filtra kolorystycznego
-        JButton colorFilterButton = new JButton("Filtr kolorystyczny");
-        colorFilterButton.addActionListener(e -> applyColorFilterInWorker());
-        controlPanel.add(colorFilterButton);
-
-        add(controlPanel, BorderLayout.SOUTH);
     }
 
     private void loadImage() {
@@ -147,8 +148,6 @@ public class PodZad2 extends JFrame { // Klasa główna aplikacji, dziedziczy po
                     for (int y = 0; y < image.getHeight(); y++) {
                         for (int x = 0; x < image.getWidth(); x++) {
                             int pixel = image.getRGB(x, y);
-                            int r = (pixel >> 16) & 0xff;
-                            int g = (pixel >> 8) & 0xff;
                             int b = pixel & 0xff;
                             int newPixel = (0) | b;
                             filteredImage.setRGB(x, y, newPixel);

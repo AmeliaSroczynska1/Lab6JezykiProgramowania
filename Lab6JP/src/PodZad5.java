@@ -1,3 +1,10 @@
+// Wprowadź mechanizm synchronizacji, aby kontrolować jednoczesny dostęp do obiektu reprezentującego obraz. Użyj bloku
+// synchronized w odpowiednich miejscach, aby zapewnić bezpieczny dostęp do wspólnego obiektu przez różne wątki. Upewnij się, że
+// operacje modyfikujące i odczytujące obiekt są otoczone blokiem synchronized, aby uniknąć współbieżnych modyfikacji.
+//Pamiętaj, żeby ograniczyć zakres bloku synchronized do minimum, aby unikać nadmiernego blokowania, co może wpłynąć na
+// wydajność. W przypadku tego podzadania, blok synchronized powinien obejmować tylko te części kodu, które faktycznie
+// modyfikują lub odczytują wspólny obiekt reprezentujący obraz.
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;

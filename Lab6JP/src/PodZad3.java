@@ -1,3 +1,6 @@
+//  Wprowadź kilka różnych efektów przetwarzania obrazu, ale zrób to tak, aby każdy efekt działał w osobnym wątku
+//  za pomocą SwingWorker. Nie synchronizuj dostępu do obiektu reprezentującego obraz.
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -114,7 +117,6 @@ public class PodZad3 extends JFrame {
                 }
             }
         };
-
         worker.execute();
     }
 
